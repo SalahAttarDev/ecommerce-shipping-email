@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Order Has Shipped - Urban Threads</title>
+    <style>
+        @media screen and (max-width:570px) {
+            .mobile-stack {
+                display: block !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 15px 0 0 0 !important;
+                text-align: center !important;
+            } 
+            .db {
+                text-align: center !important;
+                display: block !important;
+                padding-bottom: 20px !important;
+            }
+            .product-text {
+                text-align: center !important;
+            }
+        }
+    </style>
+</head>
+<body style="margin:0; padding:0; font-family: Helvetica, Arial, sans-serif; background-color: #ececec;">
+
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+        <tr>
+            <td align="center" style="padding: 20px 0;">
+                <table width="600" border="0" bgcolor="#ffffff" cellpadding="0" cellspacing="0" role="presentation" style="width:100%; max-width:600px; border:1px solid #dddddd; background-color: #ffffff;">
+                    <tr>
+                        <td style="padding:0 20px;">
+                            <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+
+                                <tr>
+                                    <td>
+                                        <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                            <tr>
+                                                <td align="center" style="padding:40px 0 30px 0">    
+                                                    <h1 style="margin:0; font-weight: 800; font-size: 28px; letter-spacing: 2px;">URBAN THREADS</h1>
+                                                </td> 
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                            <tr>
+                                                <td align="center" bgcolor="#e8f4f8" style="background-color:#e8f4f8; padding:15px 0;">
+                                                    <p style="margin:0; color:#111111; font-size:16px; font-weight: bold; letter-spacing: 1px;">SHIPPING UPDATE</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                            <tr>
+                                                <td align="center" style="padding:35px 0;">
+                                                    <h2 style="margin:0; font-size: 24px;">
+                                                        GREAT NEWS, {% if customer.first_name %}{{ customer.first_name | upcase }}{% else %}{{ customer.full_name | upcase }}{% endif %}!
+                                                    </h2>
+                                                    <h2 style="margin:0; font-size: 24px; line-height: 34px;">YOUR GEAR IS ON THE MOVE.</h2>
+                                                    <p style="margin:0; padding:20px 0 10px; color: #444444; font-size: 15px;">
+                                                        Order #{{ order.order_number }} has officially left our warehouse. 
+                                                    </p>
+                                                    <p style="margin:0; color: #444444; padding: 0 0 30px; font-size: 15px;">
+                                                        Use the link below to keep an eye on your delivery.    
+                                                    </p>
+
+                                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                                        <tr>
+                                                            <td align="center" bgcolor="#222222" style="background-color: #222222; border-radius: 3px;">
+                                                                <a style="display: block; padding: 14px 28px; margin:0; text-decoration: none; color: #ffffff; font-weight: bold; font-size: 14px;" href="{{ order.tracking_url }}" target="_blank">TRACK MY PACKAGE</a>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                            <tr>
+                                                <td align="center">
+                                                    <h3 style="margin:0; padding:0 0 15px; font-size: 18px; text-transform: uppercase;">Order Details</h3>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" height="2" bgcolor="#eeeeee" style="background-color: #eeeeee; line-height: 2px; font-size: 2px;">&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" style="padding:25px 0; font-size: 0; text-align: center;">
+                                                    
+                                                    <div class="db" style="display: inline-block; width:100%; max-width:270px; vertical-align: top; font-size: 14px; text-align: left;">
+                                                        <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                                            <tr>
+                                                                <td align="left" style="padding-right: 10px;">
+                                                                    <p style="margin:0 0 5px 0; color: #777777; font-size: 12px; text-transform: uppercase;"> Delivered To </p>
+                                                                    <p style="margin:0 0 3px 0; font-weight: bold; color: #111;"> {{ customer.full_name | default: 'Client' }} </p>
+                                                                    {% if order.shipping_address %}
+                                                                        <p style="margin:0 0 3px 0; color: #333;">{{ order.shipping_address.street }}</p>
+                                                                        <p style="margin:0 0 3px 0; color: #333;">{{ order.shipping_address.city_state_zip }}</p>
+                                                                        <p style="margin:0; color: #333;">{{ order.shipping_address.country }}</p>
+                                                                    {% endif %}
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+
+                                                    <div class="db" style="display: inline-block; width:100%; max-width:270px; vertical-align: top; font-size: 14px; text-align: left;">
+                                                        <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                                            <tr>
+                                                                <td align="left" style="padding-left: 10px;">
+                                                                    <p style="margin:0 0 5px 0; color: #777777; font-size: 12px; text-transform: uppercase;"> Billed To </p>
+                                                                    <p style="margin:0 0 3px 0; font-weight: bold; color: #111;"> {{ customer.full_name | default: 'Client' }} </p>
+                                                                    {% if order.billing_address %}
+                                                                        <p style="margin:0 0 3px 0; color: #333;">{{ order.billing_address.street }}</p>
+                                                                        <p style="margin:0 0 3px 0; color: #333;">{{ order.billing_address.city_state_zip }}</p>
+                                                                        <p style="margin:0; color: #333;">{{ order.billing_address.country }}</p>
+                                                                    {% endif %}
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                {% if order.card_last_four %}
+                                <tr>
+                                    <td>
+                                        <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                            <tr>
+                                                <td align="center" style="padding-bottom: 25px;">
+                                                    <p style="margin:0 0 5px 0; color: #777777; font-size: 12px; text-transform: uppercase;"> Payment Info </p>
+                                                    <p style="margin:0; font-weight: bold; font-size: 15px; color: #111;">
+                                                        {{ order.payment_method }} ending in {{ order.card_last_four }}
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                {% endif %}
+
+                                <tr>
+                                    <td>
+                                        <table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
+                                            <tr>
+                                                <td align="center" style="padding:15px 0;">
+                                                    <p style="margin:0; font-size:18px; font-weight: bold; text-transform: uppercase;">In This Shipment</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td height="2" bgcolor="#eeeeee" style="background-color: #eeeeee; line-height: 2px; font-size: 2px;">&nbsp;</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+                                            {% for item in order.items %}
+                                            <tr>
+                                                <td style="padding:20px 0; font-size: 0; text-align: left;">
+                                                    
+                                                    <div class="mobile-stack" style="display:inline-block; width:100%; max-width:130px; vertical-align: top;">
+                                                        <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    <img src="{{ item.image_url }}" style="display: block; outline:none; border-radius: 4px;" width="130" alt="{{ item.name }}">
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+
+                                                    <div class="mobile-stack" style="display:inline-block; width:100%; max-width:380px; vertical-align: top; font-size: 14px;">
+                                                        <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                                            <tr>
+                                                                <td class="product-text" align="left" style="padding: 0 15px;">
+                                                                    <p style="margin:0; padding:0 0 6px; font-weight: bold; font-size: 16px; color: #111;">{{ item.name }}</p>
+                                                                    <p style="margin:0 0 4px 0; color: #555;"> SKU: {{ item.sku }}</p>
+                                                                    <p style="margin:0 0 4px 0; color: #555;"> Fit: {{ item.fit }} </p>
+                                                                    <p style="margin:0 0 4px 0; color: #555;"> Color: {{ item.color }} </p>
+                                                                    <p style="margin:0 0 8px 0; color: #555;"> Qty: {{ item.quantity }} </p>
+                                                                    <p style="margin:0; font-weight: bold; color: #111;"> ${{ item.price }} </p>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+
+                                                </td>
+                                            </tr>
+                                            {% unless forloop.last %}
+                                            <tr>
+                                                <td height="2" bgcolor="#eeeeee" style="background-color: #eeeeee; line-height: 2px; font-size: 2px;">&nbsp;</td>
+                                            </tr>
+                                            {% endunless %}
+                                            {% endfor %}
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                            <tr>
+                                                <td height="2" bgcolor="#eeeeee" style="background-color: #eeeeee; line-height: 2px; font-size: 2px;">&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding:20px 0;">
+                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                                        <tr>
+                                                            <td align="left" style="font-size: 14px; color: #444;">
+                                                                <p style="margin:0; padding:0 0 10px;">Subtotal</p>
+                                                                <p style="margin:0; padding:0 0 10px;">Shipping</p>
+                                                                <p style="margin:0; padding:0 0 10px;">Estimated Tax</p>
+                                                            </td>
+                                                            <td align="right" style="font-size: 14px; color: #444;">
+                                                                <p style="margin:0; padding:0 0 10px;"> ${{ order.totals.subtotal }} </p>
+                                                                <p style="margin:0; padding:0 0 10px;"> 
+                                                                    {% if order.totals.shipping == "Free" %}{{ order.totals.shipping }}{% else %}${{ order.totals.shipping }}{% endif %}
+                                                                </p>
+                                                                <p style="margin:0; padding:0 0 10px;"> ${{ order.totals.tax }} </p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td height="2" bgcolor="#222222" style="background-color: #222222; line-height: 2px; font-size: 2px;">&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding:15px 0;">
+                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                                        <tr>
+                                                            <td align="left">
+                                                                <p style="margin:0; font-weight:bold; font-size: 16px; color: #111;">TOTAL</p>    
+                                                            </td>
+                                                            <td align="right">
+                                                                <p style="margin:0; font-weight:bold; font-size: 18px; color: #111;"> ${{ order.totals.grand_total }}</p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="padding:30px 0 20px 0;">
+                                        <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                            <tr>
+                                                <td align="center" bgcolor="#222222" style="background-color:#222222; padding:20px 25px; border-radius: 4px;">
+                                                    <p style="margin:0; color:#ffffff; font-size:18px; font-weight: bold; letter-spacing: 0.5px;"> Thanks for exploring with us! </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                            <tr>
+                                                <td align="center">
+                                                    <p style="margin:0; font-size:11px; color: #888888;">
+                                                        This email was sent to {{ customer.email }} 
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" style="padding:15px 0;">
+                                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                                        <tr>
+                                                            <td style="padding:0 12px; border-right: 1px solid #cccccc;">    
+                                                                <a style="color:#555555; margin:0; font-size:12px; text-decoration: none;" href="#">Support</a>
+                                                            </td>
+                                                            <td style="padding:0 12px; border-right: 1px solid #cccccc;">
+                                                                <a style="color:#555555; margin:0; font-size:12px; text-decoration: none;" href="#">Returns</a>
+                                                            </td>
+                                                            <td style="padding:0 12px;">
+                                                                <a style="color:#555555; margin:0; font-size:12px; text-decoration: none;" href="#">Privacy Policy</a>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" style="padding-bottom: 30px;">
+                                        <p style="margin:0; font-size: 11px; color: #888888;">
+                                            Urban Threads LLC | 455 Warehouse Blvd | Austin, TX 78704 | United States 
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    
+</body>
+</html>
