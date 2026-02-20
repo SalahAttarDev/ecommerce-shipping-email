@@ -29,8 +29,8 @@ The code is modular and "ESP-Ready," making it perfectly suited for immediate in
 ## 📂 Repository Structure
 * `index.html`: The core production-ready template containing Liquid logic.
 * `render.js`: A Node.js script using `liquidjs` to simulate ESP rendering.
-* `preview.jpg`: Visual representation of the rendered desktop layout.
-* `preview-mobile.jpg`: Visual representation of the rendered mobile layout.
+* `preview.png`: Visual representation of the rendered desktop layout.
+* `preview-mobile.png`: Visual representation of the rendered mobile layout.
 
 ## 🤝 Contact
 **Salah Attar** *Web & Email Developer* Focused on creating high-conversion, accessible, and technically robust digital experiences.
